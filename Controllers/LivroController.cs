@@ -13,7 +13,14 @@ namespace Biblioteca.Controllers
 
         [HttpPost]
         public IActionResult Cadastro(Livro l)
-        {
+        {       
+            if(l.Titulo== "" || l.Autor== "" ||l.Ano== 0){
+
+                ViewData["msgErro"] = "preencha os campos abaixo";
+                return View();
+            }else{
+
+
             LivroService livroService = new LivroService();
 
             if(l.Id == 0)
@@ -25,9 +32,13 @@ namespace Biblioteca.Controllers
                 livroService.Atualizar(l);
             }
 
+            
+            }
             return RedirectToAction("Listagem");
         }
 
+        
+        
         public IActionResult Listagem(string tipoFiltro, string filtro)
         {
             Autenticacao.CheckLogin(this);
