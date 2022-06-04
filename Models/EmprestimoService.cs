@@ -33,7 +33,7 @@ namespace Biblioteca.Models
             }
         }
 
-        public ICollection<Emprestimo> ListarTodos(FiltrosEmprestimos filtro = null)
+        public ICollection<Emprestimo> ListarTodos(FiltrosEmprestimos filtro)
         {   
 
             using(BibliotecaContext bc = new BibliotecaContext())

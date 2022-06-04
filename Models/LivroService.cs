@@ -1,3 +1,7 @@
+using System.IO.Enumeration;
+using System.ComponentModel;
+using System.Reflection.Metadata;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
@@ -50,6 +54,7 @@ namespace Biblioteca.Models
                         default:
                             query = bc.Livros;
                         break;
+                       
                     }
                 }
                 else
@@ -81,6 +86,7 @@ namespace Biblioteca.Models
             using(BibliotecaContext bc = new BibliotecaContext())
             {
                 return bc.Livros.Find(id);
+                  
             }
         }
     }
