@@ -51,3 +51,6 @@ I:\senac EAD\tec informatica para internet\MODULO B\UC07Documentar_manutençãoE
 I:\senac EAD\tec informatica para internet\MODULO B\UC07Documentar_manutençãoEmaplicação_web\ATV2\atv2Uc07JairoCesar\Biblioteca\obj\Debug\netcoreapp3.1\Biblioteca.dll
 I:\senac EAD\tec informatica para internet\MODULO B\UC07Documentar_manutençãoEmaplicação_web\ATV2\atv2Uc07JairoCesar\Biblioteca\obj\Debug\netcoreapp3.1\Biblioteca.pdb
 I:\senac EAD\tec informatica para internet\MODULO B\UC07Documentar_manutençãoEmaplicação_web\ATV2\atv2Uc07JairoCesar\Biblioteca\obj\Debug\netcoreapp3.1\Biblioteca.genruntimeconfig.cache
+I:\senac EAD\tec informatica para internet\MODULO B\UC07Documentar_manutençãoEmaplicação_web\ATV2\atv2Uc07JairoCesar\Biblioteca\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Cadastro.cshtml.g.cs
+I:\senac EAD\tec informatica para internet\MODULO B\UC07Documentar_manutençãoEmaplicação_web\ATV2\atv2Uc07JairoCesar\Biblioteca\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Edicao.cshtml.g.cs
+I:\senac EAD\tec informatica para internet\MODULO B\UC07Documentar_manutençãoEmaplicação_web\ATV2\atv2Uc07JairoCesar\Biblioteca\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Listagem.cshtml.g.cs

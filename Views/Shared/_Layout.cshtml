@@ -21,7 +21,9 @@
                     <ul class="navbar-nav flex-grow-1">
                         
                         @if(Context.Session.GetString("user")==null){ // desconectado
-                         
+                         /* <li class="nav-item">
+                            <a class="nav-link text-light" asp-controller="Usuario" asp-action="Cadastro">Cadastro de usuario</a>
+                        </li>*/
                         
 
                         }else{//conectado
@@ -36,6 +38,9 @@
                                 <a class="dropdown-item" href="/Emprestimo/Listagem">Listagem</a>
                                 <a class="dropdown-item" href="/Emprestimo/Cadastro">Cadastro</a>
                             </div>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-light" asp-controller="Usuario" asp-action="Cadastro">Cadastro de usuario</a>
                         </li>
 
                         }

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Biblioteca.Models;
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Biblioteca.Models;
 using Microsoft.AspNetCore.Http;
 
 namespace Biblioteca.Controllers
@@ -33,16 +34,15 @@ namespace Biblioteca.Controllers
         [HttpPost]
         public IActionResult Login(string login, string senha)
         {
-            if(login != "admin" || senha != "123")
-            {
-                ViewData["Erro"] = "Senha inválida";
+
+            if(Autenticacao.verificaLoginSenha(login,senha,this)){
+                    return RedirectToAction("Index");
+            }else{
+                 ViewData["Erro"] = "Senha inválida";
                 return View();
+
             }
-            else
-            {
-                HttpContext.Session.SetString("user", "admin");
-                return RedirectToAction("Index");
-            }
+           
         }
 
         public IActionResult Privacy()

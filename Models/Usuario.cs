@@ -9,7 +9,7 @@ namespace Biblioteca.Models
         public string Nome{get; set;}
         public string Login {get; set;}
         public string Senha{get; set;}
-        public string Tipo {get; set;}
+        public int Tipo {get; set;}
 
         public Usuario(){
             
