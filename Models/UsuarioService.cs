@@ -20,6 +20,7 @@ namespace Biblioteca.Models
         public List<Usuario> Listar(){
 
             using(BibliotecaContext bc = new BibliotecaContext()){
+
                return bc.Usuarios.ToList();
                      
             }           
@@ -29,7 +30,7 @@ namespace Biblioteca.Models
         public Usuario Listar(int id){
             using (BibliotecaContext bc = new BibliotecaContext()){
 
-                return bc.Usuarios.Find();
+                return bc.Usuarios.Find(id);
             }
         }
 

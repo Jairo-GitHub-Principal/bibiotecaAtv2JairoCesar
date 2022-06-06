@@ -12,8 +12,7 @@ using System;
 
 namespace Biblioteca.Models
 {
-     public static class Cryptographya
-    {
+     public static class Cryptographya{
        
         
             public static string TextoCryptographado( string senha)

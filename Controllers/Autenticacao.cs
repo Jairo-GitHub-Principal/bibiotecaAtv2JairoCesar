@@ -1,6 +1,6 @@
 using Biblioteca.Models;
-
 using System.Security.Cryptography;
+
 using System.Reflection.Metadata.Ecma335;
 using System.Security.AccessControl;
 using System.Reflection.Metadata;
@@ -30,15 +30,13 @@ namespace Biblioteca.Controllers
         public static bool verificaLoginSenha(string login, string senha, Controller controller){
 
             using (BibliotecaContext bc = new BibliotecaContext())
-            {
-               
-
+            { 
                 // senha 
-               
+                verificarSeAdminExiste(bc);
+              
+                string s = Cryptographya.TextoCryptographado(senha); 
 
-                senha = Cryptographya.TextoCryptographado(senha); 
-
-                IQueryable<Usuario> UsuarioEncontrado = bc.Usuarios.Where(u => u.Login == login && u.Senha== senha);
+                IQueryable<Usuario> UsuarioEncontrado = bc.Usuarios.Where(u => u.Login==login && u.Senha==s);
                 List<Usuario> listaUsuarioEncontrado = UsuarioEncontrado.ToList();
 
                 if(listaUsuarioEncontrado.Count == 0){
@@ -74,7 +72,7 @@ namespace Biblioteca.Controllers
 
         // verificar se o usuario é admin 
         public static void verificaSeUsuarioAdmin(Controller controller){
-            if(!( controller.HttpContext.Session.GetInt32("tipo")==Usuario.ADMIN)){
+            if(!( controller.HttpContext.Session.GetInt32("tipo")==Usuario.PADRAO)){
                 controller.Request.HttpContext.Response.Redirect("/Usuario/NeedAdmin");
             }
         }

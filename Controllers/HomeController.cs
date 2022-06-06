@@ -23,6 +23,7 @@ namespace Biblioteca.Controllers
         public IActionResult Index()
         {
             Autenticacao.CheckLogin(this);
+            ViewData["message"] = "seja bem vindo ao sistema de controle de emprestimo de livros";
             return View();
         }
 
