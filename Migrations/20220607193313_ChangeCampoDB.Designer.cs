@@ -3,14 +3,16 @@ using System;
 using Biblioteca.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Biblioteca.Migrations
 {
     [DbContext(typeof(BibliotecaContext))]
-    partial class BibliotecaContextModelSnapshot : ModelSnapshot
+    [Migration("20220607193313_ChangeCampoDB")]
+    partial class ChangeCampoDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,19 +31,17 @@ namespace Biblioteca.Migrations
                     b.Property<DateTime>("DataEmprestimo")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("Devolvido")
-                        .HasColumnType("INT");
+                    b.Property<bool>("Devolvido")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<int>("LivroId")
                         .HasColumnType("int");
 
                     b.Property<string>("NomeUsuario")
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
-                        .HasMaxLength(100);
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Telefone")
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
-                        .HasMaxLength(100);
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -60,12 +60,10 @@ namespace Biblioteca.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Autor")
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
-                        .HasMaxLength(100);
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Titulo")
-                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
-                        .HasMaxLength(100);
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
