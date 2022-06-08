@@ -34,6 +34,8 @@ namespace Biblioteca.Models
             }
         }
 
+         
+
 
         public void editarUsuario(Usuario userEditar){
             using(BibliotecaContext bc = new BibliotecaContext()){
@@ -53,14 +55,35 @@ namespace Biblioteca.Models
         public void excluirUsuario(int id){
 
             using(BibliotecaContext bc = new BibliotecaContext()){
+                   
 
-                bc.Usuarios.Remove(bc.Usuarios.Find(id));  // o Remove não reconhece diretamente a propriedade int, 
+                   Usuario usuarioEncontrado = bc.Usuarios.Find(id);
+                bc.Usuarios.Remove(usuarioEncontrado);  // o Remove não reconhece diretamente a propriedade int, 
                 // ela deve primeiro ser passada para um objeto, para que o remove possa reconhece-la, no caso 
                 // estamos passando o int id para o objeto bc, essa  é uma das formas de usar o metodo Remove
                 // ou  bc.Usuarios.Remove(Listar(id)); 
                 bc.SaveChanges();
             }
         }
+
+
+        public Usuario ObterPorId(int id)
+        {   
+            using(BibliotecaContext bc = new BibliotecaContext())
+            {
+                      
+
+
+                return bc.Usuarios.Find(id);  
+            }
+        }
+
+            public Usuario GetPostDetail(int id)
+            {  using (var context = new BibliotecaContext())
+            {Usuario registro = context.Usuarios.Where(p => p.Id == id).SingleOrDefault();
+            return registro;
+            }
+            }
 
         
     }

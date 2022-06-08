@@ -26,35 +26,72 @@ namespace Biblioteca.Controllers
             UsuarioService us = new UsuarioService();
             
             us.incluirUsuario(u);
-            return View();
+            return RedirectToAction("Listagem");
         }
 
-        public IActionResult Listadeusurio() // chamar a pagina de listagem de usuario
+        public IActionResult Listagem() // chamar a pagina de listagem de usuario
         {
-            Autenticacao.CheckLogin(this);
-            Autenticacao.verificaSeUsuarioAdmin(this);
-            return View(new UsuarioService().Listar());
+           UsuarioService u = new UsuarioService();
+           List<Usuario> listarUsuario = u.Listar();
+            return View(listarUsuario);
         }
 
-         public IActionResult Editarusuario(int id) // chama pagina de ediçã de usuario
+         public IActionResult Editar(int id) // chama pagina de ediçã de usuario
         {
             
-           Usuario u = new UsuarioService().Listar(id);
-           return View(u);
+           Usuario usuarioEncontrado = new UsuarioService().Listar(id);
+           return View(usuarioEncontrado);
         }
 
 [HttpPost]
-         public IActionResult Editarusuario(Usuario Usereditado) // recebe dados para edição de usuarios
+         public IActionResult Editar(Usuario Usereditado) // recebe dados para edição de usuarios
         {
             
            UsuarioService us = new UsuarioService();
            us.editarUsuario(Usereditado);
            
-           return RedirectToAction("Listadeusurio");
+           return RedirectToAction("Listagem");
 
         }
 
-             public IActionResult Registrarusuario()
+           
+
+        public IActionResult Excluirusuario(int id){
+            UsuarioService us = new UsuarioService();
+             us.excluirUsuario(id);
+            return RedirectToAction("Listagem");
+            
+        }
+
+       
+        
+
+       
+
+        public IActionResult NeedAdmin(){
+            Autenticacao.CheckLogin(this);
+            return View();
+        }
+
+        public IActionResult sair(){
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index","Home");
+                 
+        }
+
+        // o codigo abaixo é omesmo cadastrar usuario
+
+
+
+        /*
+         public IActionResult Cadastrorealizado(){
+            Autenticacao.CheckLogin(this);
+            Autenticacao.verificaSeUsuarioAdmin(this);
+            return View();
+        }
+
+
+            public IActionResult Registrarusuario()
         {
             
             Autenticacao.CheckLogin(this);
@@ -74,43 +111,8 @@ namespace Biblioteca.Controllers
             UsuarioService us = new UsuarioService();
             us.incluirUsuario(Novouser);
             return RedirectToAction("Cadastrorealizado");
-        }
-
-        public IActionResult Excluirusuario(int id){
-            return View(new UsuarioService().Listar(id));
-        }
-
-        [HttpPost]
-
-        public IActionResult Excluirusuario(string decisao, int id){
-            if(decisao == "EXCLUIR"){
-                ViewData["message"] = "Exclusão do usuario"+ new UsuarioService().Listar(id).Nome+ " realizado com sucesso";
-                return View("Listadeusurio",new UsuarioService().Listar());
-            }else{
-                
-                 ViewData["message"] = "Exclusão cancelada";
-                 
-                
-            } return View("Listadeusurio", new UsuarioService().Listar());
-
-        }
-
-        public IActionResult Cadastrorealizado(){
-            Autenticacao.CheckLogin(this);
-            Autenticacao.verificaSeUsuarioAdmin(this);
-            return View();
-        }
-
-        public IActionResult NeedAdmin(){
-            Autenticacao.CheckLogin(this);
-            return View();
-        }
-
-        public IActionResult sair(){
-            HttpContext.Session.Clear();
-            return RedirectToAction("Index","Home");
-                 
-        }
+        } 
+        */
 
        
     }
