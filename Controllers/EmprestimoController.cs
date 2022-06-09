@@ -10,7 +10,7 @@ namespace Biblioteca.Controllers
     public class EmprestimoController : Controller
     {
         public IActionResult Cadastro()
-        {
+        { Autenticacao.CheckLogin(this);
             LivroService livroService = new LivroService();
             EmprestimoService emprestimoService = new EmprestimoService();
 

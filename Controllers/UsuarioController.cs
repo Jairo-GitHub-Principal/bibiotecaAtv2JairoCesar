@@ -14,7 +14,8 @@ namespace Biblioteca.Controllers
     public class UsuarioController:Controller
     {
          public IActionResult Cadastro()
-        {
+        { Autenticacao.CheckLogin(this);
+            Autenticacao.verificaSeUsuarioAdmin(this);
            
             
             return View();
@@ -23,6 +24,8 @@ namespace Biblioteca.Controllers
         [HttpPost]
         public IActionResult Cadastro(Usuario u)
         {
+           
+            
             UsuarioService us = new UsuarioService();
             
             us.incluirUsuario(u);
@@ -31,13 +34,20 @@ namespace Biblioteca.Controllers
 
         public IActionResult Listagem() // chamar a pagina de listagem de usuario
         {
-           UsuarioService u = new UsuarioService();
+            
+           /*UsuarioService u = new UsuarioService();
            List<Usuario> listarUsuario = u.Listar();
-            return View(listarUsuario);
+            return View(listarUsuario);*/
+            // abaixo jeito com  ef core
+            Autenticacao.CheckLogin(this);
+            Autenticacao.verificaSeUsuarioAdmin(this);
+            return View(new UsuarioService().Listar());
         }
 
          public IActionResult Editar(int id) // chama pagina de ediçã de usuario
         {
+             Autenticacao.CheckLogin(this);
+            Autenticacao.verificaSeUsuarioAdmin(this);
             
            Usuario usuarioEncontrado = new UsuarioService().Listar(id);
            return View(usuarioEncontrado);
@@ -53,13 +63,27 @@ namespace Biblioteca.Controllers
            return RedirectToAction("Listagem");
 
         }
-
+public IActionResult Excluirusuario(int id){
+            UsuarioService us = new UsuarioService();
+            Usuario usuarioEncontrado = us.ObterPorId(id);
+            return View(usuarioEncontrado);
+            
+        }
            
 
-        public IActionResult Excluirusuario(int id){
+[HttpPost]
+
+        public IActionResult Excluirusuario(string decisao, Usuario u){
             UsuarioService us = new UsuarioService();
-             us.excluirUsuario(id);
+
+            if(decisao=="Excluir"){
+
+                us.excluirUsuario(u.Id);
             return RedirectToAction("Listagem");
+            }else{
+                return RedirectToAction("Listagem");
+            }
+             
             
         }
 

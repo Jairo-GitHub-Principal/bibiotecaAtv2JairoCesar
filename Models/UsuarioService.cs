@@ -12,6 +12,7 @@ namespace Biblioteca.Models
 
         public void incluirUsuario(Usuario novoUser){
             using(BibliotecaContext bc = new BibliotecaContext()){
+                novoUser.Senha = Cryptographya.TextoCryptographado(novoUser.Senha);
                 bc.Usuarios.Add(novoUser);
                 bc.SaveChanges();
             }
@@ -44,7 +45,7 @@ namespace Biblioteca.Models
                Usuario u = bc.Usuarios.Find(userEditar.Id);
                u.Nome = userEditar.Nome;
                u.Login =userEditar.Login;
-               u.Senha =userEditar.Senha;
+               u.Senha =Cryptographya.TextoCryptographado(userEditar.Senha);
                u.Tipo = userEditar.Tipo;
 
                bc.SaveChanges(); 

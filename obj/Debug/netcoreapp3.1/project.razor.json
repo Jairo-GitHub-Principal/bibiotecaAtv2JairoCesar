@@ -14442,11 +14442,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "i:\\senac EAD\\tec informatica para internet\\MODULO B\\UC07Documentar_manutençãoEmaplicação_web\\ATV2\\atv2Uc07JairoCesar\\Biblioteca\\Views\\Usuario\\Excluir.cshtml",
-      "TargetPath": "Views\\Usuario\\Excluir.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "i:\\senac EAD\\tec informatica para internet\\MODULO B\\UC07Documentar_manutençãoEmaplicação_web\\ATV2\\atv2Uc07JairoCesar\\Biblioteca\\Views\\Usuario\\Editar.cshtml",
       "TargetPath": "Views\\Usuario\\Editar.cshtml",
       "FileKind": "mvc"

@@ -72,7 +72,7 @@ namespace Biblioteca.Controllers
 
         // verificar se o usuario é admin 
         public static void verificaSeUsuarioAdmin(Controller controller){
-            if(!( controller.HttpContext.Session.GetInt32("tipo")==Usuario.PADRAO)){
+            if(!( controller.HttpContext.Session.GetInt32("tipo")==Usuario.ADMIN)){
                 controller.Request.HttpContext.Response.Redirect("/Usuario/NeedAdmin");
             }
         }
