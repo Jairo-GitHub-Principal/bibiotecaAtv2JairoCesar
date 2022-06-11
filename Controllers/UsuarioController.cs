@@ -56,9 +56,9 @@ namespace Biblioteca.Controllers
 [HttpPost]
          public IActionResult Editar(Usuario Usereditado) // recebe dados para edição de usuarios
         {
-            
-           UsuarioService us = new UsuarioService();
-           us.editarUsuario(Usereditado);
+            new UsuarioService().editarUsuario(Usereditado); // codigo menor que o de baixo,
+           //UsuarioService us = new UsuarioService();
+           //us.editarUsuario(Usereditado);
            
            return RedirectToAction("Listagem");
 

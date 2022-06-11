@@ -1,7 +1,8 @@
+using System;
 using System.ComponentModel.DataAnnotations; // stringlength
 using System.ComponentModel.DataAnnotations.Schema;//Columnnamespace Biblioteca.Models
 
-using System;
+
 
 namespace Biblioteca.Models
 {

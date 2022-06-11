@@ -2,11 +2,14 @@
 
 @{
     ViewData["Title"] = "Listagem de Livros";
-    int FiltroPorPag = Int32.Parse(ViewData["livrosPorPagina"].ToString());
-    int PaginaAtual = Int32.Parse(ViewData["PaginaAtual"].ToString());
-    int NumLivroPorPag = (Model.Count < FiltroPorPag ? Model.Count : FiltroPorPag);
-    int NumTotalDePag = Model.Count/NumLivroPorPag + (Model.Count%NumLivroPorPag==0 ? 0 : 1);
-    
+    int Filtro = Int32.Parse(ToString());
+    int PaginaAtual = Int32.Parse(ToString());
+    int NumLivroPorPag = (Model.Count < Filtro ? Model.Count : Filtro);
+    int NumTotalDePag = 0;
+    if(NumLivroPorPag > 0)
+    {
+       NumTotalDePag = Model.Count / NumLivroPorPag + (Model.Count % NumLivroPorPag==0 ? 0 : 1);
+    }
    
 }
 <div class="row">
@@ -35,10 +38,9 @@
             <button type="submit" class="btn btn-primary mb-2 ml-2">Pesquisar</button>
             
             <div id="SeletorPaginas">
-                <span>Pagina:</span>
                 @for (int i = 1; i <= NumTotalDePag; i++)
                 {
-                    <span><a href="/Livro/Listagem?PaginaAtual=@i">@i,</a></span>
+                    <span><a href="/Livro/Listagem?PaginaAtual=@i"></a></span>
                 }
             </div>
         </form>
@@ -61,14 +63,14 @@
                 </thead>
 
                 <tbody>
-                    @for(int i = (PaginaAtual-1) * NumLivroPorPag; i < (NumLivroPorPag * PaginaAtual < Model.Count ? NumLivroPorPag * PaginaAtual : Model.Count); i++)
+                    @for(int i = PaginaAtual * NumLivroPorPag; i < (NumLivroPorPag * PaginaAtual < Model.Count ? NumLivroPorPag * PaginaAtual : Model.Count); i++)
                     {
                         <tr>
                             <td>@Model[i].Id</td>
                             <td>@Model[i].Titulo</td>
                             <td>@Model[i].Autor</td>
                             <td>@Model[i].Ano</td>
-                            <td><a href="/Livro/Edicao/@Model[i].Id">Editar</a></td>
+                           <td><a href="/Livro/Edicao/@Model[i].Id">Editar</a></td>
                         </tr>
                     }
                 </tbody>
