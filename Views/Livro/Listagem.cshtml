@@ -5,7 +5,11 @@
     int FiltroPorPag = Int32.Parse(ViewData["livrosPorPagina"].ToString());
     int PaginaAtual = Int32.Parse(ViewData["PaginaAtual"].ToString());
     int NumLivroPorPag = (Model.Count < FiltroPorPag ? Model.Count : FiltroPorPag);
-    int NumTotalDePag = Model.Count/NumLivroPorPag + (Model.Count%NumLivroPorPag==0 ? 0 : 1);
+    int NumTotalDePag = 0;
+    if(NumLivroPorPag > 0)
+    { 
+        NumTotalDePag = Model.Count / NumLivroPorPag + (Model.Count % NumLivroPorPag==0 ? 0 : 1); 
+    }
     
    
 }
@@ -25,10 +29,7 @@
             <div>
                 <select name="itensPorPagina" id="itensPorPagina">
                     <option value="10"> 10 livros</option>
-                    <option value="15"> 15 livros</option>
-                    <option value="30"> 30 livros</option>
-                    <option value="50"> 50 livros</option>
-                    <option value=@Model.Count > Todos</option>
+                   
                 </select>
             </div>
             

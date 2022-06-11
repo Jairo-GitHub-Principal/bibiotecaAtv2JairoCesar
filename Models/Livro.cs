@@ -12,5 +12,6 @@ namespace Biblioteca.Models
         [StringLength(100)] //dataanotation define o tipo de dado como varchar  e determina um limite de caractere para  100
         public string Autor { get; set; }
         public int Ano { get; set; }
+       
     }
 }
