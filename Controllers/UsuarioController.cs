@@ -14,7 +14,8 @@ namespace Biblioteca.Controllers
     public class UsuarioController:Controller
     {
          public IActionResult Cadastro()
-        { Autenticacao.CheckLogin(this);
+        { 
+            Autenticacao.CheckLogin(this);
             Autenticacao.verificaSeUsuarioAdmin(this);
            
             
@@ -22,8 +23,9 @@ namespace Biblioteca.Controllers
         }
 
         [HttpPost]
-        public IActionResult Cadastro(Usuario u)
-        {
+        public IActionResult Cadastro(Usuario u){
+            Autenticacao.CheckLogin(this);
+            Autenticacao.verificaSeUsuarioAdmin(this);
            
             
             UsuarioService us = new UsuarioService();
@@ -56,6 +58,8 @@ namespace Biblioteca.Controllers
 [HttpPost]
          public IActionResult Editar(Usuario Usereditado) // recebe dados para edição de usuarios
         {
+            Autenticacao.CheckLogin(this);
+            Autenticacao.verificaSeUsuarioAdmin(this);
             new UsuarioService().editarUsuario(Usereditado); // codigo menor que o de baixo,
            //UsuarioService us = new UsuarioService();
            //us.editarUsuario(Usereditado);
@@ -64,6 +68,8 @@ namespace Biblioteca.Controllers
 
         }
 public IActionResult Excluirusuario(int id){
+            Autenticacao.CheckLogin(this);
+            Autenticacao.verificaSeUsuarioAdmin(this);
             UsuarioService us = new UsuarioService();
             Usuario usuarioEncontrado = us.ObterPorId(id);
             return View(usuarioEncontrado);
@@ -74,6 +80,8 @@ public IActionResult Excluirusuario(int id){
 [HttpPost]
 
         public IActionResult Excluirusuario(string decisao, Usuario u){
+            Autenticacao.CheckLogin(this);
+            Autenticacao.verificaSeUsuarioAdmin(this);
             UsuarioService us = new UsuarioService();
 
             if(decisao=="Excluir"){

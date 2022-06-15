@@ -79,7 +79,37 @@ namespace Biblioteca.Models
                     .Where(l =>  !(bc.Emprestimos.Where(e => e.Devolvido == false).Select(e => e.LivroId).Contains(l.Id)) )
                     .ToList();
             }
+
+            
         }
+         public ICollection<Livro> GetPosts(string q, string ordem, int page, int size)
+            {
+            using (var context = new BibliotecaContext())
+            {
+                int pular = (page - 1)* size;
+
+                IQueryable<Livro> consulta = context.Livros.Where(l=>l.Titulo.Contains(q,StringComparison.OrdinalIgnoreCase));
+                
+                
+                if(ordem == "t"){
+                    consulta = consulta.OrderBy(l=>l.Titulo);
+                }else{
+                    if(ordem == "a"){
+                    consulta = consulta.OrderBy(l=>l.Autor);
+                    }
+                }
+                
+
+                return consulta.Skip(pular).Take(size).ToList();
+            
+            }
+            
+            }
+           public int CountRegistro(){
+                using(var context = new BibliotecaContext()){
+                    return context.Livros.Count();
+                }
+            }
 
         public Livro ObterPorId(int id)
         {

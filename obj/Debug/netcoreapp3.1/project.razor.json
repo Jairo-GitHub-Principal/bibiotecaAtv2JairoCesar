@@ -14442,11 +14442,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "i:\\senac EAD\\tec informatica para internet\\MODULO B\\UC07Documentar_manutençãoEmaplicação_web\\ATV2\\atv2Uc07JairoCesar\\Biblioteca\\Views\\Livro\\codigoDePaginação.cshtml",
-      "TargetPath": "Views\\Livro\\codigoDePaginação.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "i:\\senac EAD\\tec informatica para internet\\MODULO B\\UC07Documentar_manutençãoEmaplicação_web\\ATV2\\atv2Uc07JairoCesar\\Biblioteca\\Views\\Usuario\\Editar.cshtml",
       "TargetPath": "Views\\Usuario\\Editar.cshtml",
       "FileKind": "mvc"
@@ -14474,11 +14469,6 @@
     {
       "FilePath": "i:\\senac EAD\\tec informatica para internet\\MODULO B\\UC07Documentar_manutençãoEmaplicação_web\\ATV2\\atv2Uc07JairoCesar\\Biblioteca\\Views\\Usuario\\Excluirusuario.cshtml",
       "TargetPath": "Views\\Usuario\\Excluirusuario.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "i:\\senac EAD\\tec informatica para internet\\MODULO B\\UC07Documentar_manutençãoEmaplicação_web\\ATV2\\atv2Uc07JairoCesar\\Biblioteca\\Views\\Livro\\listagemCopia.cshtml",
-      "TargetPath": "Views\\Livro\\listagemCopia.cshtml",
       "FileKind": "mvc"
     },
     {
