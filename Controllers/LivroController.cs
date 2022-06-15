@@ -53,7 +53,7 @@ namespace Biblioteca.Controllers
              
              int quantidadeDeRegistros = ls.CountRegistro();
              ViewData["quantpaginas"] = (int)Math.Ceiling((double)quantidadeDeRegistros/quantidadeDeRegistroPorPagina);
-             ICollection<Livro> lista = ls.GetPosts(q,ordem,p,quantidadeDeRegistroPorPagina);
+             ICollection<Livro> lista = ls.GetLivros(q,ordem,p,quantidadeDeRegistroPorPagina);
             return View(lista);
         }
 

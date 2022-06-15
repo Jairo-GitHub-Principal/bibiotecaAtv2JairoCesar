@@ -32,7 +32,7 @@ namespace Biblioteca.Models
             }
         }
 
-        public ICollection<Livro> ListarTodos(FiltrosLivros filtro = null)
+        public ICollection<Livro> ListarTodos(FiltrosLivros filtro = null) // esse metodo tambem é usado por emprestimos de livros, portanto não pode ser excluido
         {
             using(BibliotecaContext bc = new BibliotecaContext())
             {
@@ -67,6 +67,7 @@ namespace Biblioteca.Models
                 return query.OrderBy(l => l.Titulo).ToList();
             }
         }
+        
 
         public ICollection<Livro> ListarDisponiveis()
         {
@@ -82,7 +83,7 @@ namespace Biblioteca.Models
 
             
         }
-         public ICollection<Livro> GetPosts(string q, string ordem, int page, int size)
+         public ICollection<Livro> GetLivros(string q, string ordem, int page, int size) // esse metodo é usado somente por livros e é fundamental para a paginaçao
             {
             using (var context = new BibliotecaContext())
             {
